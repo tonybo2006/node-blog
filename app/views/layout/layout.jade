@@ -1,7 +1,23 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		title= title
+		//link(rel='icon', href='/images/favicon.ico')
+		link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+		//datatable
+		//link(rel='stylesheet', href='/bower_components/datatables-plugins/integration/3/dataTables.bootstrap.css')
+		// Custom CSS
+	body
+		#wrapper
+			include nav.jade
+			#page-wrapper
+				block content
+		// jQuery
+		script(src='/bower_components/jquery/dist/jquery.min.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+		// Custom Theme JavaScript
+
+		block scripts
