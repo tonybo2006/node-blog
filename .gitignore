@@ -25,3 +25,68 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+## npm
+
+npm-debug.log
+node_modules/
+
+# bower
+bower_components/
+
+## other
+sftp-config.json
+config.json
+public/src/nodebb.min.js
+!src/views/config.json
+public/css/*.css
+*.sublime-project
+*.sublime-workspace
+.project
+*.swp
+Vagrantfile
+.vagrant
+provision.sh
+*.komodoproject
+.DS_Store
+feeds/recent.rss
+
+logs/
+
+pidfile
+/public/templates
+/public/sounds
+/public/files_temp
+
+/public/uploads
+
+/public/admin.css
+/public/nodebb.min.js
+/public/nodebb.min.js.map
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+*.iml
+
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+/obj/Debug/whitebeach.njsproj.FileListAbsolute.txt
+/.ntvs_analysis.dat
+/.ntvs_analysis.dat.tmp
+
+## vs
+.vs
+*.njsproj
+*.sln
+
+/obj/Debug/whitebeach.njsprojResolveAssemblyReference.cache
+/config/database.js
+/config/qiniu.js
+/lib/migration/log/*.*
+
+
+## webstorme
+.idea
