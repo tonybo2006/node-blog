@@ -1,0 +1,13 @@
+extends ../layout/layout
+
+block content
+  .row
+    .col-lg-2
+      .list-group
+        .list-group-item.active
+          a 全部
+    .col-lg-10
+      ul
+        -each blog, index in blogs
+          li
+            a(href='/blogs/'+blog.id)=blog.title
