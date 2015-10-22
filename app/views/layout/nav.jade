@@ -1,14 +1,23 @@
-nav.navbar.navbar-inverse.navbar-fixed-top
-	.navbar-header
-		button.navbar-toggle.collapsed(type='button',aria-expanded='false' data-toggle='collapse'
-		aria-controls='navbar')
-		span.sr-only Toggle navigation
-		span.icon-bar
-		span.icon-bar
-		span.icon-bar
-	a.navbar-brand(href='/') Node Blog
+nav.navbar.navbar-default.navbar-fixed-top
+	.container
+		.navbar-header
+			button.navbar-toggle.collapsed(aria-expanded='false' data-target="#navbar" data-toggle='collapse'
+			aria-controls='navbar')
+				span.sr-only Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.navbar-brand(href='/') Node-Blog
 
-	// /.navbar-header
-	ul.nav.navbar-nav
-		li.active
-			a Home
+		div.collapse.navbar-collapse(id='navbar')
+			ul.nav.navbar-nav
+				li
+					a(href='/home/') Home
+				li
+					a My Blog
+			form.navbar-form.navbar-right
+				.form-group
+					input.form-control(type='text',placeholder='Email')
+				.form-group
+					input.form-control(type='password',placeholder='Passwrod')
+				button.btn.btn-success(type='submit') Sign In
