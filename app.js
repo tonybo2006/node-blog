@@ -4,6 +4,27 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mongoose = require('mongoose');
+var db = require('./config/database.js');
+
+var connect = function () {
+  var options = {
+    server: {
+      socketOptions: {
+        keepAlive: 1
+      }
+    }
+  };
+  mongoose.connect(db.dbConnectionString, options);
+};
+connect();
+
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
+mongoose.connection.on('open', function() {
+  console.log('mongoDB is opening');
+});
 
 var routes = require('./app/controllers/index');
 var users = require('./app/controllers/users');
@@ -21,7 +42,8 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('3CCC4ACD-6ED1-4844-9217-82131BDCB239'));
+app.use(session({ secret: 'nb', key: 'node-blog', cookie: { maxAge: 3600000}}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
