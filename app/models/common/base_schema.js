@@ -47,11 +47,6 @@ function BaseSchema( add ) {
 	schema.plugin(dp);
 
 	schema.statics = {
-		"createResource" :  function (callback) {
-			this.save(function (err, doc) {
-				callback(err, doc);
-			});
-		},
 		"findResource": function (options, callback) {
 			options.select = options.select || ' -__v';
 			options.population = options.population || '';
