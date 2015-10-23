@@ -15,30 +15,13 @@ router.get('/',function (req, res, next){
 
 	};
 	Blog.listByPage(options,function( err , blogs){
-		console.log('task: ' + JSON.stringify(doc));
+		console.log('blogs: ' + JSON.stringify(blogs));
 		if (err) {
 			console.error('err::' + err);
 		} else {
 			res.render('blog/index',{title:'Node-Blog',blogs:blogs});
 		}
 	})
-});
-
-/**
- *
- */
-router.get('/:blogId',function (req, res, next){
-	var options = {
-
-	};
-	Blog.findResource(options,function( err , blog){
-		console.log('task: ' + JSON.stringify(doc));
-		if (err) {
-			console.error('err::' + err);
-		} else {
-			res.render('blog/detail',{title:'Node-Blog',blog:blog});
-		}
-	});
 });
 
 /**
@@ -49,15 +32,34 @@ router.get('/new',function (req, res, next){
 });
 
 /**
+ *
+ */
+router.get('/:id',function (req, res, next){
+	var options = {
+		"criteria": {
+			"_id": req.params.id
+		}
+	};
+
+	Blog.findResource(options,function( err , blog){
+		console.log('blog: ' + JSON.stringify(blog));
+		if (err) {
+			console.error('err::' + err);
+		} else {
+			res.render('blog/detail',{title:'Node-Blog',blog:blog});
+		}
+	});
+});
+
+/**
  * add new blog
  */
 router.post('/',function (req, res, next){
 
-	var options = {
+	var blog = new Blog(req.body);
 
-	};
-	Blog.save(options,function( err , blog){
-		console.log('task: ' + JSON.stringify(doc));
+	blog.save(function( err , result){
+		console.log('result: ' + JSON.stringify(result));
 		if (err) {
 			console.error('err::' + err);
 		} else {

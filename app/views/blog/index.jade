@@ -10,15 +10,16 @@ block content
       .sidebar-module
         h4 分类
         ul
-          li
-            a(href='/blogs/types/'+blog.type)=blog.type
+          //-each blog, index in blogs
+          //  li
+          //    a(href='/blogs/types/'+type)=blog.type
 
     .col-lg-10
       a(href='/blogs/new') 发表Blog
       ol
         -each blog, index in blogs
-        li.list-unstyled
-          a(href='/blogs/'+blog.id)=blog.title
+          li.list-unstyled
+            a(href='/blogs/'+blog.id) #{blog.title}
     nav
       ul.pager
         li

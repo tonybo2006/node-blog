@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -26,6 +27,15 @@ mongoose.connection.on('open', function() {
   console.log('mongoDB is opening');
 });
 
+//models
+require(path.join(__dirname, 'app/models/common/base_schema'));
+fs.readdirSync(path.join(__dirname, 'app/models')).forEach(function (file) {
+  if ( ~file.indexOf('.js') ) {
+    require(path.join(__dirname, 'app/models', file));
+  }
+});
+
+//controllers
 var routes = require('./app/controllers/index');
 var users = require('./app/controllers/users');
 var homeController = require('./app/controllers/home_controller');
