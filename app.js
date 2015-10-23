@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var db = require('./config/database.js');
+var methodOverride = require('method-override');
 
 var connect = function () {
   var options = {
@@ -43,6 +44,8 @@ var blogController = require('./app/controllers/blog_controller');
 
 var app = express();
 
+app.locals.title = 'Node-Blog';
+
 // view engine setup
 app.set('views', path.join(__dirname,'app', 'views'));
 app.set('view engine', 'jade');
@@ -54,6 +57,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('3CCC4ACD-6ED1-4844-9217-82131BDCB239'));
 app.use(session({ secret: 'nb', key: 'node-blog', cookie: { maxAge: 3600000}}));
+app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
