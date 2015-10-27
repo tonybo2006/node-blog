@@ -82,7 +82,7 @@ function BaseSchema( add ) {
 			options.sort = options.sort || {'lastUpdateDate': -1};
 			schema.find(options.criteria)
 				.select(options.select)
-				.deepPopulate(options.population )
+				.deepPopulate(options.deepPopulate, options.deepSelect)
 				.sort(options.sort)
 				.exec(callback);
 		},

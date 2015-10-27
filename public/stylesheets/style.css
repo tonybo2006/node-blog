@@ -42,3 +42,7 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+.barrage {
+  background: url("../images/cc-cat-768.jpg") no-repeat 4px 5px;
+}

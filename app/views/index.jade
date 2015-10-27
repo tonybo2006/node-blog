@@ -1,7 +1,18 @@
 extends ./layout/layout
+block scripts
+  script(src='/javascripts/CommentCoreLibrary.js')
+  script(src='/javascripts/index.js')
+  script(src='/javascripts/emit.js')
 
 block content
   .row
     .col
       h1 Node-Blog
       p Welcome to use Node-Blog. This Blog is developed with Node.js + Express + MongoDB + BootStrap.
+      .form-group
+        textarea.form-control#msg(placeholder='来一发弹幕～')
+        button.btn.btn-default.btn-success.pull-right#btnSend 发射
+  #my-player.abp.barrage(style='width:100%; height:600px;')
+    #my-comment-stage.container
+  ul#messages
+
