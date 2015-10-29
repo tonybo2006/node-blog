@@ -44,6 +44,7 @@ var blogController = require('./app/controllers/blog_controller');
 
 var app = express();
 
+app.set('root',__dirname);
 app.locals.title = 'Node-Blog';
 
 // view engine setup
