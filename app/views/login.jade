@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= appTitle
+    script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
+    link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bower_components/bootstrap/dist/css/bootstrap-theme.min.css', rel='stylesheet')
+    script(type="text/javascript", src="/css/bootstrap-3.0.2/js/bootstrap.min.js")
+    script(type="text/javascript", src="/js/Blog.js")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  body
+    block page
+      - var menu = 'login'
+    block content 
+      .col-md-4.col-md-offset-4
+        h2 Log in
+        div= error
+        div
+          form(action="/admins/login", method="post")
+            p
+              input.form-control(name="email", type="text", placeholder="edit@hujiang.com" value="edit@hujiang.com")
+            p
+              input.form-control(name="password", type="password", placeholder="" value="password")
+              input(name="originalUrl" type="hidden" value=originalUrl)
+            p
+              button.btn.btn-lg.btn-primary.btn-block(type="submit") Log in
